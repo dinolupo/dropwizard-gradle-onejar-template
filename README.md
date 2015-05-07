@@ -20,10 +20,13 @@ gradle distZip
 gradle awesomeFunJar
 ```
 
-# References
+## References
 [Dropwizard getting started](http://www.dropwizard.io/getting-started.html)
+
 [Gradle as Build System for your Dropwizard Project](http://alexanderkohout.de/blog/gradle-as-build-system-for-your-dropwizard-project/)
+
 [gradle-one-jar](https://github.com/rholder/gradle-one-jar)
+
 
 
 
