@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'gradle-one-jar'
+
+// Basic Properties
+sourceCompatibility = 1.7
+targetCompatibility = '1.7'
+
+version = '0.1'
+mainClassName = "info.dinolupo.HelloWorldApplication"
+
+task awesomeFunJar(type: OneJar) {
+    mainClass = mainClassName
+}
+
+project.ext {
+    dropwizardVersion = '0.8.1'
+}
+
+buildscript {
+	repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'io.dropwizard:dropwizard-testing:' + dropwizardVersion
+
+    compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
+    compile 'io.dropwizard:dropwizard-jdbi:' + dropwizardVersion
+    
+    // ..
+}
+
+run {
+    args 'server', 'hello-world.yml'
+}
+
+jar {
+    baseName = 'microservice-template'
+    version =  '1.0.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+
